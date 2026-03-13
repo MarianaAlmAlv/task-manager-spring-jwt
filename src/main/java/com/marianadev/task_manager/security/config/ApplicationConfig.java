@@ -60,7 +60,5 @@ public class ApplicationConfig {
     public UserDetailsService userDetailService(){
         return username-> authRepository.findByUsername(username)
                 .orElseThrow(()-> new UsernameNotFoundException("User not found"));
-    }
-
-
+    } 
 }

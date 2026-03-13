@@ -1,5 +1,6 @@
 package com.marianadev.task_manager.entity;
 import jakarta.persistence.Basic;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,10 @@ public class task {
     @Basic
     private String title;
     private String description;
+    // MySQL stores this column as BIT(1); map it to a Java boolean
+    // (Hibernate will read/write the one‑byte value as true/false).
+    @Column(columnDefinition = "bit(1)")
     private boolean completed;
-    private LocalDateTime createdAt;
+
+    private LocalDateTime created_At;
 }

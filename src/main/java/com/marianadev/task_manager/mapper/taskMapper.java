@@ -12,20 +12,21 @@ public class taskMapper {
             task.getTitle(),
             task.getDescription(),
             task.isCompleted(),
-            task.getCreatedAt()
+            task.getCreated_At()
         );
         return dto;
     }
 
     public static task maptoEntity(taskDto dto) {
-        task task = new task(
-            dto.getId(),
-            dto.getTitle(),
-            dto.getDescription(),
-            dto.isCompleted(),
-            dto.getCreatedAt()
-        );
-        return task;
+        task t = new task();
+        if (dto.getId() != null && dto.getId() > 0) {
+            t.setId(dto.getId());
+        }
+        t.setTitle(dto.getTitle());
+        t.setDescription(dto.getDescription());
+        t.setCompleted(dto.isCompleted());
+        t.setCreated_At(dto.getCreatedAt());
+        return t;
     }
 
     public static List<taskDto> mapToDtoList(List<task> tasks) {
